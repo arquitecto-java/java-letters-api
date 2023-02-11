@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Result {
+public class ResultJSON {
 
     private String message;
 

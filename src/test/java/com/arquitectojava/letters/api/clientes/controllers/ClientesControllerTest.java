@@ -36,7 +36,7 @@ public class ClientesControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("GET /clients")
+    @DisplayName("GET /clientes")
     public void test_list_clients() throws Exception {
         //Behavior
         Cliente cliente = new Cliente();
@@ -55,14 +55,14 @@ public class ClientesControllerTest {
         // SUT and Assert
         mockMvc
                 .perform(
-                        get("/clients")
+                        get("/clientes")
                 )
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
                 //.andExpect(header().string(HttpHeaders.ETAG, "\"1\""))
-                //.andExpect(header().string(HttpHeaders.LOCATION, "/clients"))
+                //.andExpect(header().string(HttpHeaders.LOCATION, "/clientes"))
 
                 .andExpect(jsonPath("$[0].id").value(cliente.getId()))
                 .andExpect(jsonPath("$[0].fname").value(cliente.getFname()))
@@ -78,7 +78,7 @@ public class ClientesControllerTest {
     }
 
     @Test
-    @DisplayName("POST /clients - Success")
+    @DisplayName("POST /clientes - Success")
     public void test_create_client() throws Exception {
         //Behavior
         String payload = "{\n" +
@@ -109,7 +109,7 @@ public class ClientesControllerTest {
         // SUT and Assert
         mockMvc
                 .perform(
-                        post("/clients")
+                        post("/clientes")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload)
                 )
@@ -118,7 +118,7 @@ public class ClientesControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
                 //.andExpect(header().string(HttpHeaders.ETAG, "\"1\""))
-                //.andExpect(header().string(HttpHeaders.LOCATION, "/clients/1"))
+                //.andExpect(header().string(HttpHeaders.LOCATION, "/clientes/1"))
 
                 .andExpect(jsonPath("$.id").value(cliente.getId()))
                 .andExpect(jsonPath("$.fname").value(cliente.getFname()))

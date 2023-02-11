@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Client {
+public class ClienteJSON {
     private Integer id;
     private String fname;
     private String lname;

@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
-class LettersServicesApplicationTests {
+class LettersAPIAppTests {
 
 	@Test
 	void contextLoads() {

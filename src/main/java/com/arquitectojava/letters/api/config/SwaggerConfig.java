@@ -18,9 +18,9 @@ public class SwaggerConfig {
     @Bean
     public Docket apiDocs() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Letters Services")
+                .groupName("Letters API")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.arquitectojava.lettersservices"))
+                .apis(RequestHandlerSelectors.basePackage("com.arquitectojava.letters.api"))
                 //.paths(PathSelectors.ant("/v1/*"))
                 .build()
                 .apiInfo(apiInfo());
@@ -28,11 +28,11 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Letters Services",
-                "Servicio iniciales Letters Papeleria SAS",
+                "Letters API",
+                "API Letters",
                 "1.X",
                 "Terms of service",
-                new Contact("Andrés Jiménez", "www.letterspapeleria.co", "andres@letterspapeleria.co"),
+                new Contact("Andrés Jiménez", "www.arquitectojava.com", "andres@arquitectojava.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
 
