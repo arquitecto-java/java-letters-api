@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+    db:
+      image: mysql:5.7
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: letterdb
+        MYSQL_USER: appuser
+        MYSQL_PASSWORD: password
+      volumes:
+        - db-data:/var/lib/mysql
+    app:
+      build: ./
+      restart: on-failure
+      depends_on:
+        - db
+      ports:
+        - 8080:8080
+      environment:
+        DATABASE_HOST: db
+        DATABASE_USER: appsuer
+        DATABASE_PASSWORD: password
+        DATABASE_NAME: letterdb
+        DATABASE_PORT: 3306
+volumes:
+      db-data:

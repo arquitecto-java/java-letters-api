@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+
+  app:
+    image: java-letters-api_app:latest
+
+    ports:
+      - 8080:8080
+    environment:
+      DATABASE_HOST: database-1.c9v8kmpunvbt.us-east-1.rds.amazonaws.com
+      DATABASE_USER: appsuer
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: letterdb
+      DATABASE_PORT: 3306
+volumes:
+  db-data:
