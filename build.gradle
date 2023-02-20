@@ -4,6 +4,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'com.bmuschko:gradle-docker-plugin:6.4.0'
+		classpath 'org.flywaydb:flyway-mysql:9.8.1'
 	}
 }
 
@@ -12,6 +13,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'pl.allegro.tech.build.axion-release' version '1.12.0'
 	id 'java'
+	id "org.flywaydb.flyway" version "9.8.1"
 }
 
 apply plugin: 'com.bmuschko.docker-spring-boot-application'
@@ -34,6 +36,16 @@ docker {
 		//jvmArgs = ['-Xms256m', '-Xmx2048m']
 		mainClassName = "com.arquitectojava.letters.api.LettersAPIApp"
 	}
+}
+
+flyway {
+	url = 'jdbc:mysql://java-letters-api_db_1:3306/letterdb'
+	user = 'appsuer'
+	password = 'password'
+	locations = [
+			// Add this when Java-based migrations are used
+			'classpath:db/migrations'
+	]
 }
 
 repositories {
@@ -97,6 +109,8 @@ task integrationTest(type: Test) {
 }
 
 check.dependsOn integrationTest
+
+bootRun.dependsOn rootProject.tasks['flywayMigrate']
 
 /*idea {
 	module {

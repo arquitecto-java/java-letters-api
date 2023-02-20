@@ -8,6 +8,7 @@ services:
         MYSQL_DATABASE: letterdb
         MYSQL_USER: appuser
         MYSQL_PASSWORD: password
+        MYSQL_ROOT_HOST: '%'
       volumes:
         - db-data:/var/lib/mysql
     app:
@@ -19,7 +20,7 @@ services:
         - 8080:8080
       environment:
         DATABASE_HOST: db
-        DATABASE_USER: appsuer
+        DATABASE_USER: appuser
         DATABASE_PASSWORD: password
         DATABASE_NAME: letterdb
         DATABASE_PORT: 3306
