@@ -1,10 +1,10 @@
 # Instrucciones de uso
 
-java-letters-api es una API HTTP REST para listar, crear y actualizar clientes la cual se utiliza como aplicación demo para el laboratorio Infraestructura como Servicio de los entrenamientos AWS de arquitecto java.
+`java-letters-api` es una API HTTP REST para listar, crear y actualizar clientes la cual se utiliza como aplicación demo para el laboratorio Infraestructura como Servicio de los entrenamientos AWS de [@arquitectojava](https://www.instagram.com/arquitectojava/).
 
-El objetivo del laboratorio es el poner en práctica los conocimientos en AWS IAM, AWS EC2 y AWS RDS.
+El objetivo del laboratorio es el poner en práctica los conocimientos de los servicios AWS IAM, AWS EC2 y AWS RDS.
 
-Tecnologías usadas por java-letters-api (no se requiere previo conocimiento en ellas para poder desarrollar el laboratorio):
+Las siguientes son tecnologías usadas por la aplicación `java-letters-api` (no se requiere previo conocimiento en ellas para poder desarrollar el laboratorio):
 * Java
 * Spring Boot
 * Gradle
@@ -15,9 +15,18 @@ Requisitos
 * Contar con acceso a la cuenta AWS awsserverless2023 (todos los estudiantes tienen acceso a la cuenta).
 En caso de no ser estudiante, contar con una cuenta AWS donde desarrollar el laboratorio.
 
+## Arquitectura de despliegue
+
+Se utiliza el repositorio privado AWS ECR `java-letters-api` de la cuenta AWS `arquitectojava`.
+La instancia EC2 y RDS se encuentran en la cuenta AWS `awsserverless2023`.
+Para que se pueda acceder al repositorio ECR que está en la otra cuenta se usa [delegación de acceso entre cuentas](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html).
+Para evitar el uso de credenciales (key pairs) en la instancia EC2 se utiliza un instance profile de EC2, el cual permite a la instancia EC2 asumir un rol, en este caso es el mismo rol que tiene permiso de acceso a el repositorio ECR la otra cuenta AWS.
+
+<img width="1140" alt="arquitectura-despliegue-iaas" src="https://user-images.githubusercontent.com/24933246/220207136-942b8ce2-0f7d-490e-ace5-aca8a8ea03b7.png">
+
 ## Compilación
 
-La compilación es un paso que solo es necesaria si se ha modificado el código fuente, o si no se tiene acceso al repositorio AWS ECR.
+La compilación es un paso que solo es necesario si se ha modificado el código fuente, o si no se tiene acceso a la cuenta AWS arquitectojava.
 
 Compilar y generar jar
 
