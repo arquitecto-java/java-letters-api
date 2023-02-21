@@ -1,0 +1,27 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
+        "ecr:DescribeImages",
+        "ecr:DescribeRepositories",
+        "ecr:ListTagsForResource",
+        "ecr:ListImages"
+      ],
+      "Resource": "arn:aws:ecr:us-east-1:428571511138:repository/java-letters-api"
+    },
+    {
+      "Sid": "VisualEditor1",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:DescribeRegistry",
+        "ecr:GetAuthorizationToken"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
