@@ -1,0 +1,16 @@
+permission-policies:
+  - p-ecr-read-java-letters-api
+trusted-entities:
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::275894921752:root"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {}
+    }
+    ]
+  }
