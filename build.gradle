@@ -44,7 +44,7 @@ flyway {
 	password = 'password'
 	locations = [
 			// Add this when Java-based migrations are used
-			'classpath:db/migrations'
+			'classpath:db/migration'
 	]
 }
 

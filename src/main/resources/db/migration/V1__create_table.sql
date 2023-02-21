@@ -1,4 +1,4 @@
-
+DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `fname` varchar(50) DEFAULT NULL,
